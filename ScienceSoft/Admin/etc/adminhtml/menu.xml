@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="ScienceSoft_Admin::sample2"
+             title="ScienceSoft"
+             translate="title"
+             module="ScienceSoft_Admin"
+             sortOrder="10"
+             resource="ScienceSoft_Admin::sample2"/>
+        <add id="ScienceSoft_Admin::sample_grid"
+             title="Grid"
+             translate="title"
+             module="ScienceSoft_Admin"
+             sortOrder="100"
+             parent="ScienceSoft_Admin::sample2"
+             action="authors/literature_rus/listing"
+             resource="ScienceSoft_Admin::sample_grid"/>
+    </menu>
+</config>

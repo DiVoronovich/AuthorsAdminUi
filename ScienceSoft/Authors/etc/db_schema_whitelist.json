@@ -1,0 +1,13 @@
+{
+    "author": {
+        "column": {
+            "author_id": true,
+            "name": true,
+            "date": true,
+            "status": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

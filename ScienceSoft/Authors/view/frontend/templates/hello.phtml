@@ -1,0 +1,27 @@
+<h2>Welcome to AuthorsList</h2>
+<?php
+/* @var Hello $block */
+
+use ScienceSoft\Authors\Block\Hello;
+
+$authorsList = $block->getAllAuthors();
+?>
+
+<div>List of authors</div>
+<br>
+<table>
+    <td>Id_author</td>
+    <td>Name</td>
+    <?php foreach ($authorsList as $item): ?>
+        <tr>
+            <td><?= $item['author_id'] ?></td>
+            <td><?= $item['name']; ?></td>
+            <td><a href="/EditAuthor/id/<?= $item['id']; ?>">Edit</a></td>
+            <td><a href="/DeleteAuthor/id/<?= $item['id']; ?>">Delete</a></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+
+
+<br>
+<a href="/">Add author</a>
