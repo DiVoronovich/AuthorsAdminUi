@@ -10,7 +10,7 @@
     </type>
     <virtualType name="ScienceSoft\Authors\Model\ResourceModel\Author\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
-            <argument name="mainTable" xsi:type="string">author</argument>
+            <argument name="mainTable" xsi:type="string">scnsoft_authors</argument>
             <argument name="resourceModel" xsi:type="string">ScienceSoft\Authors\Model\ResourceModel\Author</argument>
         </arguments>
     </virtualType>

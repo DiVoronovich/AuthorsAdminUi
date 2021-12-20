@@ -20,20 +20,15 @@ class Hello extends Template
      */
     public function __construct(
         Template\Context $context,
-        Collection $collection,
-        array $data = []
-    )
-    {
+        Collection       $collection,
+        array            $data = []
+    ) {
         parent::__construct($context, $data);
         $this->collection = $collection;
     }
 
-    public function getAllAuthors() {
+    public function getAllAuthors()
+    {
         return $this->collection;
     }
-
-//    public function getAddAuthorPostUrl() {
-//        return $this->getUrl('author/add');
-//    }
-
 }

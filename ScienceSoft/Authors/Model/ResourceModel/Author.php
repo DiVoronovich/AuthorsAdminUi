@@ -8,6 +8,6 @@ class Author extends AbstractDb
 {
     protected function _construct()
     {
-        $this->_init('author', 'author_id');
+        $this->_init('scnsoft_authors', 'author_id');
     }
 }

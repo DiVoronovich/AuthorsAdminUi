@@ -2,7 +2,7 @@
 
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
-    <table name="author" resource="default" engine="innodb"
+    <table name="scnsoft_authors" resource="default" engine="innodb"
            comment="Author Table">
         <column xsi:type="int" name="author_id" unsigned="false" nullable="false" identity="true" comment="Author ID"/>
         <column xsi:type="varchar" name="name" nullable="true" length="255" default="null" comment="Author's name"/>
@@ -11,11 +11,11 @@
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="author_id"/>
         </constraint>
-        <constraint xsi:type="foreign" referenceId="AUTHOR_STATUS_STATUS_STATUS_ID"
-                    table="author" column="status" referenceTable="status"
+        <constraint xsi:type="foreign" referenceId="SCNSOFT_AUTHORS_STATUS_SCNSOFT_AUTHORS_STATUS_STATUS_ID"
+                    table="scnsoft_authors" column="status" referenceTable="scnsoft_authors_status"
                     referenceColumn="status_id" onDelete="SET NULL"/>
     </table>
-    <table name="status" resource="default" engine="innodb"
+    <table name="scnsoft_authors_status" resource="default" engine="innodb"
            comment="Author Table">
         <column xsi:type="int" name="status_id" unsigned="false" nullable="false" identity="true" comment="Status ID"/>
         <column xsi:type="varchar" name="status" nullable="false" length="255" comment="Author status"/>
