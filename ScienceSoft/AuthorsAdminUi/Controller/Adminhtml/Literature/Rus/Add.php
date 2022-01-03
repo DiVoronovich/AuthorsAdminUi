@@ -6,20 +6,20 @@ namespace ScienceSoft\AuthorsAdminUi\Controller\Adminhtml\Literature\Rus;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
-use ScienceSoft\Authors\Model\AuthorFactory;
+use ScienceSoft\AuthorsWebapi\Api\AuthorInterfaceFactory;
 
 class Add extends Action
 {
     /**
-     * @var AuthorFactory
+     * @var AuthorInterfaceFactory
      */
-    private AuthorFactory $authorFactory;
+    private AuthorInterfaceFactory $authorFactory;
 
     /**
      * @param Context $context
-     * @param AuthorFactory $authorFactory
+     * @param AuthorInterfaceFactory $authorFactory
      */
-    public function __construct(Context $context, AuthorFactory $authorFactory)
+    public function __construct(Context $context, AuthorInterfaceFactory $authorFactory)
     {
         parent::__construct($context);
         $this->authorFactory = $authorFactory;
