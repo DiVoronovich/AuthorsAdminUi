@@ -12,7 +12,7 @@ interface AuthorInterface extends ExtensibleDataInterface
      *
      * @return int|null
      */
-    public function getId();
+    public function getId(): ?int;
 
     /**
      * Set id
@@ -20,14 +20,14 @@ interface AuthorInterface extends ExtensibleDataInterface
      * @param int $id
      * @return $this
      */
-    public function setId(int $id);
+    public function setId(int $id): self;
 
     /**
      * Get name
      *
      * @return string|null
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * Set name
@@ -35,14 +35,14 @@ interface AuthorInterface extends ExtensibleDataInterface
      * @param string $name
      * @return $this
      */
-    public function setName(string $name);
+    public function setName(string $name): self;
 
     /**
      * Get date
      *
      * @return string|null
      */
-    public function getDate();
+    public function getDate(): ?string;
 
     /**
      * Set date
@@ -50,14 +50,14 @@ interface AuthorInterface extends ExtensibleDataInterface
      * @param string $date
      * @return $this
      */
-    public function setDate(string $date);
+    public function setDate(string $date): self;
 
     /**
      * Get status
      *
      * @return int|null
      */
-    public function getStatus();
+    public function getStatus(): ?int;
 
     /**
      * Set status
@@ -65,6 +65,6 @@ interface AuthorInterface extends ExtensibleDataInterface
      * @param int $status
      * @return $this
      */
-    public function setStatus(int $status);
+    public function setStatus(int $status): self;
 
 }

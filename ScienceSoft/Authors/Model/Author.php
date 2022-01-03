@@ -30,7 +30,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * @param string $name
      * @return $this
      */
-    public function setName(string $name)
+    public function setName(string $name): self
     {
         return $this->setData(self::NAME, $name);
     }
@@ -41,9 +41,9 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * @return string|null
      * @codeCoverageIgnoreStart
      */
-    public function getName()
+    public function getName(): ?string
     {
-        return $this->_getData(self::NAME);
+        return $this->getData(self::NAME);
     }
 
     /**
@@ -53,7 +53,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * @return $this
      * @since 101.0.0
      */
-    public function setId($id)
+    public function setId($id): self
     {
         return $this->setData(self::AUTHOR_ID, $id);
     }
@@ -63,9 +63,15 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      *
      * @return int
      */
-    public function getId()
+    public function getId(): ?int
     {
-        return $this->_getData(self::AUTHOR_ID);
+        $id = $this->getData(self::AUTHOR_ID);
+
+        if (!$id) {
+            return null;
+        }
+
+        return $id;
     }
 
     /**
@@ -74,7 +80,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * @param string $date
      * @return $this
      */
-    public function setDate(string $date)
+    public function setDate(string $date): self
     {
         return $this->setData(self::DATE, $date);
     }
@@ -84,7 +90,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      *
      * @return string|null
      */
-    public function getDate()
+    public function getDate(): ?string
     {
         return $this->_getData(self::DATE);
     }
@@ -95,7 +101,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * @param int $status
      * @return $this
      */
-    public function setStatus(int $status)
+    public function setStatus(int $status): self
     {
         return $this->setData(self::STATUS, $status);
     }
@@ -105,9 +111,8 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      *
      * @return int|null
      */
-    public function getStatus()
+    public function getStatus(): ?int
     {
         return $this->_getData(self::STATUS);
     }
-
 }

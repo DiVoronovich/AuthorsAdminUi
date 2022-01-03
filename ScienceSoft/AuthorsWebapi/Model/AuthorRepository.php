@@ -99,9 +99,7 @@ class AuthorRepository implements AuthorsRepositoryInterface
     public function save(AuthorInterface $author): AuthorInterface
     {
         $loadedAuthor = $this->authorFactory->create();
-        $loadedAuthor->setName($author->getName())
-            ->setDate($author->getDate())
-            ->setStatus($author->getStatus());
+        $this->setData($loadedAuthor, $author);
         $this->authorResource->save($author);
         return $author;
     }
@@ -114,9 +112,7 @@ class AuthorRepository implements AuthorsRepositoryInterface
     public function update(AuthorInterface $author): AuthorInterface
     {
         $loadedAuthor = $this->getById($author->getId());
-        $loadedAuthor->setName($author->getName())
-            ->setDate($author->getDate())
-            ->setStatus($author->getStatus());
+        $this->setData($loadedAuthor, $author);
         $this->authorResource->save($author);
         return $author;
     }
@@ -147,5 +143,12 @@ class AuthorRepository implements AuthorsRepositoryInterface
             return true;
         }
         return false;
+    }
+
+    public function setData(AuthorInterface $loadedAuthor, AuthorInterface $author): AuthorInterface
+    {
+        return $loadedAuthor->setName($author->getName())
+            ->setDate($author->getDate())
+            ->setStatus($author->getStatus());
     }
 }
