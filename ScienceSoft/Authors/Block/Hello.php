@@ -3,32 +3,32 @@
 namespace ScienceSoft\Authors\Block;
 
 use Magento\Framework\View\Element\Template;
-use ScienceSoft\Authors\Model\ResourceModel\Author\Collection;
+use ScienceSoft\Authors\Model\AuthorFactory;
 
 class Hello extends Template
 {
     /**
-     * @var Collection
+     * @var AuthorFactory
      */
-    private $collection;
+    private AuthorFactory $authorFactory;
 
     /**
      * Hello constructor.
      * @param Template\Context $context
-     * @param Collection $collection
+     * @param AuthorFactory $authorFactory
      * @param array $data
      */
     public function __construct(
         Template\Context $context,
-        Collection       $collection,
+        AuthorFactory $authorFactory,
         array            $data = []
     ) {
         parent::__construct($context, $data);
-        $this->collection = $collection;
+        $this->authorFactory = $authorFactory;
     }
 
     public function getAllAuthors()
     {
-        return $this->collection;
+        return $this->authorFactory->create()->getCollection();
     }
 }

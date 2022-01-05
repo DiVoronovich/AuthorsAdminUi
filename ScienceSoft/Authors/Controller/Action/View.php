@@ -6,7 +6,7 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 
-class Index implements ActionInterface
+class Index2 implements ActionInterface
 {
     /**
      * @var ResultFactory

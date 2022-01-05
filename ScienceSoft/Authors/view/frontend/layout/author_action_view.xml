@@ -2,7 +2,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="ScienceSoft\Authors\Block\Hello" name="author_index_index" template="ScienceSoft_Authors::hello.phtml" />
+            <block class="ScienceSoft\Authors\Block\Hello" name="author_index_index2" template="ScienceSoft_Authors::hello.phtml" />
         </referenceContainer>
     </body>
 </page>
