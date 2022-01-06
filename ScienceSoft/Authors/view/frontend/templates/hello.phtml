@@ -1,28 +1,43 @@
-<h2>Welcome to AuthorsList</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #faced5;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center">Welcome to AuthorsList</h2>
+
 <?php
 /* @var Hello $block */
 
 use ScienceSoft\Authors\Block\Hello;
 
-//echo $block->getAllAuthors();
 $authorsList = $block->getAllAuthors();
 ?>
-
-<div>List of authors</div>
+<h3 style="text-align: center">List of authors</h3>
 <br>
-<table>
-    <td>Id_author</td>
-    <td>Name</td>
-    <?php foreach ($authorsList as $item): ?>
-        <tr>
-            <td><?= $item['author_id'] ?></td>
-            <td><?= $item['name']; ?></td>
-            <td><a href="/EditAuthor/id/<?= $item['id']; ?>">Edit</a></td>
-            <td><a href="/DeleteAuthor/id/<?= $item['id']; ?>">Delete</a></td>
-        </tr>
-    <?php endforeach; ?>
-</table>
 
+<div style="display: flex; justify-content: space-around">
+    <div>
+        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Id_author</div>
+        <div>
+            <?php foreach ($authorsList as $item): ?>
+                <div style="color: #2774a7; font-size: 16px"><?= $item['author_id'] ?></div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <div style="display: flex; flex-direction: column">
+        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
+        <?php foreach ($authorsList as $item): ?>
+            <a style="color: #2774a7; font-size: 16px"
+               href="/author/action/view/id/<?= $item['author_id']; ?>"><?= $item['name']; ?></a>
+        <?php endforeach; ?>
+    </div>
+</div>
 
-<br>
-<a href="/">Add author</a>
+</body>
+</html>

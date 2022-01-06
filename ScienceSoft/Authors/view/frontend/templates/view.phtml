@@ -1,0 +1,29 @@
+<?php
+/* @var View $block */
+
+use ScienceSoft\Authors\Block\View;
+
+$author = $block->getAuthor();
+?>
+
+<h2 style="text-align: center">All information about author</h2>
+<br>
+
+<div style="display: flex; justify-content: space-around">
+    <div>
+        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Id_author</div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author['author_id'] ?></div>
+    </div>
+    <div>
+        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author['name'] ?></div>
+    </div>
+    <div>
+        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Date</div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author['date'] ?></div>
+    </div>
+    <div>
+        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Status</div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author['status'] ?></div>
+    </div>
+</div>
