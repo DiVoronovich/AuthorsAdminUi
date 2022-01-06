@@ -15,9 +15,13 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
 
     const NAME = 'name';
 
+    const SURNAME = 'surname';
+
     const DATE = 'date';
 
     const STATUS = 'status';
+
+    const IDENTITY = 'identity';
 
     protected function _construct()
     {
@@ -44,6 +48,28 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     public function getName(): ?string
     {
         return $this->getData(self::NAME);
+    }
+
+    /**
+     * Set author surname
+     *
+     * @param string $surname
+     * @return $this
+     */
+    public function setSurname(string $surname): self
+    {
+        return $this->setData(self::SURNAME, $surname);
+    }
+
+    /**
+     * Get author surname
+     *
+     * @return string|null
+     * @codeCoverageIgnoreStart
+     */
+    public function getSurname(): ?string
+    {
+        return $this->getData(self::SURNAME);
     }
 
     /**
@@ -114,5 +140,27 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     public function getStatus(): ?int
     {
         return $this->_getData(self::STATUS);
+    }
+
+    /**
+     * Set author identity
+     *
+     * @param string $identity
+     * @return $this
+     */
+    public function setIdentity(string $identity): self
+    {
+        return $this->setData(self::IDENTITY, $identity);
+    }
+
+    /**
+     * Get author identity
+     *
+     * @return string|null
+     * @codeCoverageIgnoreStart
+     */
+    public function getIdentity(): ?string
+    {
+        return $this->getData(self::IDENTITY);
     }
 }

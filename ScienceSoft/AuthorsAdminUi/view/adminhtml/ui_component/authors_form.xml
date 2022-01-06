@@ -50,6 +50,18 @@
                 <label translate="true">Name</label>
             </settings>
         </field>
+        <field name="surname" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Surname</label>
+            </settings>
+        </field>
+        <field name="identity" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Identity</label>
+            </settings>
+        </field>
         <field name="date" formElement="date">
             <settings>
                 <dataType>text</dataType>

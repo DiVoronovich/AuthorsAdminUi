@@ -56,6 +56,28 @@
                 </item>
             </argument>
         </field>
+        <field name="surname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Author Surname</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">scnsoft_authors</item>
+                    <item name="dataScope" xsi:type="string">surname</item>
+                </item>
+            </argument>
+        </field>
+        <field name="identity">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Author Identity</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">scnsoft_authors</item>
+                    <item name="dataScope" xsi:type="string">identity</item>
+                </item>
+            </argument>
+        </field>
         <field name="status" formElement="select">
             <settings>
                 <dataType>text</dataType>

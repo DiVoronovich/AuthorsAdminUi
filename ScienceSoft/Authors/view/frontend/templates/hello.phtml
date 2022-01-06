@@ -33,8 +33,13 @@ $authorsList = $block->getAllAuthors();
     <div style="display: flex; flex-direction: column">
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
         <?php foreach ($authorsList as $item): ?>
-            <a style="color: #2774a7; font-size: 16px"
-               href="/author/action/view/id/<?= $item['author_id']; ?>"><?= $item['name']; ?></a>
+            <?php if ($item['surname'] === "null") { ?>
+                <a style="color: #2774a7; font-size: 16px"
+                   href="/author/action/view/id/<?= $item['author_id']; ?>"><?= $item['name']; ?></a>
+            <?php } else { ?>
+                <a style="color: #2774a7; font-size: 16px"
+                   href="/author/action/view/id/<?= $item['author_id']; ?>"><?= $item['name']; ?> <?= $item['surname']; ?></a>
+            <?php } ?>
         <?php endforeach; ?>
     </div>
 </div>
