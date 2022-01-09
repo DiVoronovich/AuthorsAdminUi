@@ -10,28 +10,30 @@ $author = $block->getAuthor();
 <br>
 
 <div style="display: flex; justify-content: space-around">
-    <div>
-        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Id_author</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['author_id'] ?></div>
-    </div>
-    <div>
-        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['name'] ?></div>
-    </div>
-    <div>
-        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['surname'] ?></div>
-    </div>
-    <div>
-        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Date</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['date'] ?></div>
-    </div>
-    <div>
-        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Status</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['status'] ?></div>
-    </div>
-    <div>
-        <div style="font-weight: bold; font-size: 24px; color: #0A246A">Identity</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['identity'] ?></div>
-    </div>
+    <?php foreach ($author as $item): ?>
+        <div>
+            <div style="font-weight: bold; font-size: 24px; color: #0A246A">Id_author</div>
+            <div style="color: #2774a7; font-size: 16px"><?= $item['author_id'] ?></div>
+        </div>
+        <div>
+            <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
+            <div style="color: #2774a7; font-size: 16px"><?= $item['name'] ?></div>
+        </div>
+        <div>
+            <div style="font-weight: bold; font-size: 24px; color: #0A246A">Surname</div>
+            <div style="color: #2774a7; font-size: 16px"><?= $item['surname'] ?></div>
+        </div>
+        <div>
+            <div style="font-weight: bold; font-size: 24px; color: #0A246A">Date</div>
+            <div style="color: #2774a7; font-size: 16px"><?= $item['date'] ?></div>
+        </div>
+        <div>
+            <div style="font-weight: bold; font-size: 24px; color: #0A246A">Status</div>
+            <div style="color: #2774a7; font-size: 16px"><?= $item['status'] ?></div>
+        </div>
+        <div>
+            <div style="font-weight: bold; font-size: 24px; color: #0A246A">Identity</div>
+            <div style="color: #2774a7; font-size: 16px"><?= $item['identity'] ?></div>
+        </div>
+    <?php endforeach; ?>
 </div>

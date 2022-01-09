@@ -35,10 +35,10 @@ $authorsList = $block->getAllAuthors();
         <?php foreach ($authorsList as $item): ?>
             <?php if ($item['surname'] === "null") { ?>
                 <a style="color: #2774a7; font-size: 16px"
-                   href="/author/action/view/id/<?= $item['author_id']; ?>"><?= $item['name']; ?></a>
+                   href="/author_page/<?= $item['identity']; ?>"><?= $item['name']; ?></a>
             <?php } else { ?>
                 <a style="color: #2774a7; font-size: 16px"
-                   href="/author/action/view/id/<?= $item['author_id']; ?>"><?= $item['name']; ?> <?= $item['surname']; ?></a>
+                   href="/author_page/<?= $item['identity']; ?>"><?= $item['name']; ?> <?= $item['surname']; ?></a>
             <?php } ?>
         <?php endforeach; ?>
     </div>
