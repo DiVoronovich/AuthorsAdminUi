@@ -1,11 +1,17 @@
 <?php
+declare(strict_types=1);
 
-namespace ScienceSoft\Authors\Controller\Index;
+
+namespace ScienceSoft\Authors\Controller\Listing;
 
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 
+/**
+ * Index class.
+ * Shows list of authors
+ */
 class Index implements ActionInterface
 {
     /**
@@ -24,7 +30,7 @@ class Index implements ActionInterface
     /**
      * @return ResultInterface
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }

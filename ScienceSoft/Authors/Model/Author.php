@@ -31,7 +31,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     /**
      * Set author name
      *
-     * @param string $name
+     * @param string|null $name
      * @return $this
      */
     public function setName(string $name): self
@@ -43,7 +43,6 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * Get author name
      *
      * @return string|null
-     * @codeCoverageIgnoreStart
      */
     public function getName(): ?string
     {
@@ -53,10 +52,10 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     /**
      * Set author surname
      *
-     * @param string $surname
+     * @param string|null $surname
      * @return $this
      */
-    public function setSurname(string $surname): self
+    public function setSurname(?string $surname): self
     {
         return $this->setData(self::SURNAME, $surname);
     }
@@ -65,7 +64,6 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * Get author surname
      *
      * @return string|null
-     * @codeCoverageIgnoreStart
      */
     public function getSurname(): ?string
     {
@@ -73,11 +71,10 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     }
 
     /**
-     * Set author Id
+     * Set author id
      *
      * @param int $id
      * @return $this
-     * @since 101.0.0
      */
     public function setId($id): self
     {

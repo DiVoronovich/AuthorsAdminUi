@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace ScienceSoft\Authors\Controller\Index;
 
@@ -6,6 +7,10 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
 
+/**
+ * View class.
+ * Shows page of author.
+ */
 class View implements ActionInterface
 {
     /**
@@ -24,7 +29,7 @@ class View implements ActionInterface
     /**
      * @return ResultInterface
      */
-    public function execute()
+    public function execute(): ResultInterface
     {
         return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }

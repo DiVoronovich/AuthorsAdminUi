@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+    <type name="ScienceSoft\Authors\Model\Author">
+        <plugin name="ScienceSoft_Authors_Plugin" type="ScienceSoft\Authors\Plugin\AuthorPlugin" sortOrder="1" disabled="false"/>
+    </type>
+</config>

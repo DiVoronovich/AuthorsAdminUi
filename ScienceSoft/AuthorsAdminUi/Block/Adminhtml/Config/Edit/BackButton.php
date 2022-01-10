@@ -24,12 +24,14 @@ class BackButton implements ButtonProviderInterface
      */
     public function __construct(
         Context $context
-    ) {
+    )
+    {
         $this->urlBuilder = $context->getUrlBuilder();
     }
 
     /**
      * @inheritdoc
+     * @return array
      */
     public function getButtonData(): array
     {

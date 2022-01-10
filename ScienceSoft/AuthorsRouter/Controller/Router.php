@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ScienceSoft\Router\Controller;
+namespace ScienceSoft\AuthorsRouter\Controller;
 
 use Magento\Framework\App\Action\Forward;
 use Magento\Framework\App\ActionFactory;
@@ -34,7 +34,8 @@ class Router implements RouterInterface
     public function __construct(
         ActionFactory     $actionFactory,
         ResponseInterface $response
-    ) {
+    )
+    {
         $this->actionFactory = $actionFactory;
         $this->response = $response;
     }
@@ -45,16 +46,12 @@ class Router implements RouterInterface
      */
     public function match(RequestInterface $request): ?ActionInterface
     {
+        if ($request->getModuleName() === 'author') {
+            return null;
+        }
         $identifier = trim($request->getPathInfo(), '/');
 
-        if (strpos($identifier, 'authors_list') !== false) {
-            $request->setModuleName('author');
-            $request->setControllerName('index');
-            $request->setActionName('index');
-            $request->setParams([]);
-
-            return $this->actionFactory->create(Forward::class, ['request' => $request]);
-        } elseif (strpos($identifier, 'author_page') !== false) {
+        if (strpos($identifier, 'author_page') !== false) {
             $routes = explode('/', $identifier);
             $identity = $routes[1];
             $request->setModuleName('author');

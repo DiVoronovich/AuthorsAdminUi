@@ -6,23 +6,16 @@ namespace ScienceSoft\Authors\Block;
 use Magento\Backend\App\Action;
 use Magento\Framework\Api\Search\DocumentInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use ScienceSoft\Authors\Model\AuthorFactory;
-use Magento\Framework\View\Element\Template;
 use ScienceSoft\AuthorsWebapi\Model\AuthorRepository;
 
-class View extends Template
+class Listing extends Template
 {
-    /**
-     * @var AuthorFactory
-     */
-    private AuthorFactory $authorFactory;
-
-    /**
-     * @var Action
-     */
-    private Action $action;
-
     /**
      * @var AuthorRepository
      */
@@ -33,39 +26,38 @@ class View extends Template
      */
     private SearchCriteriaBuilder $searchCriteriaBuilder;
 
+    /**
+     * @var array
+     */
+    private array $data;
 
     /**
-     * View constructor.
+     * Listing constructor.
      * @param Context $context
-     * @param AuthorFactory $authorFactory
-     * @param Action $action
      * @param AuthorRepository $authorRepository
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param array $data
      */
     public function __construct(
         Context               $context,
-        AuthorFactory         $authorFactory,
-        Action                $action,
         AuthorRepository      $authorRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         array                 $data = []
     )
     {
         parent::__construct($context, $data);
-        $this->authorFactory = $authorFactory;
-        $this->action = $action;
         $this->authorRepository = $authorRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->data = $data;
     }
 
     /**
+     * Get all authors
      * @return DocumentInterface[]
      */
-    public function getAuthor(): array
+    public function getAllAuthors(): array
     {
-        $identity = $this->action->getRequest()->getParam('identity');
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('identity', $identity)->create();
+        $searchCriteria = $this->searchCriteriaBuilder->addFilters([])->create();
         return $this->authorRepository->getList($searchCriteria)->getItems();
     }
 }

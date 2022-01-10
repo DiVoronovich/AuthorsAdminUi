@@ -12,30 +12,29 @@
 <h2 style="text-align: center">Welcome to AuthorsList</h2>
 
 <?php
-/* @var Hello $block */
+/* @var Listing $block */
 
-use ScienceSoft\Authors\Block\Hello;
+use ScienceSoft\Authors\Block\Listing;
 
 $authorsList = $block->getAllAuthors();
 ?>
 <h3 style="text-align: center">List of authors</h3>
 <br>
-
 <div style="display: flex; justify-content: space-around">
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Id_author</div>
         <div>
             <?php foreach ($authorsList as $item): ?>
-                <div style="color: #2774a7; font-size: 16px"><?= $item['author_id'] ?></div>
+                <div style="color: #2774a7; font-size: 16px"><?= $item->getId() ?></div>
             <?php endforeach; ?>
         </div>
     </div>
     <div style="display: flex; flex-direction: column">
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
         <?php foreach ($authorsList as $item): ?>
-            <?php if ($item['surname'] === "null") { ?>
+            <?php if ($item['surname'] === null) { ?>
                 <a style="color: #2774a7; font-size: 16px"
-                   href="/author_page/<?= $item['identity']; ?>"><?= $item['name']; ?></a>
+                   href="/author_page/<?= $item['identity']; ?>"><?= $item->getName(); ?></a>
             <?php } else { ?>
                 <a style="color: #2774a7; font-size: 16px"
                    href="/author_page/<?= $item['identity']; ?>"><?= $item['name']; ?> <?= $item['surname']; ?></a>

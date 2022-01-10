@@ -51,12 +51,13 @@ class AuthorRepository implements AuthorsRepositoryInterface
      * @param CollectionProcessorInterface $collectionProcessor
      */
     public function __construct(
-        AuthorInterfaceFactory  $authorFactory,
-        AuthorResource          $authorResource,
-        AuthorCollectionFactory $authorCollectionFactory,
-        SearchResultFactory     $searchResultFactory,
+        AuthorInterfaceFactory       $authorFactory,
+        AuthorResource               $authorResource,
+        AuthorCollectionFactory      $authorCollectionFactory,
+        SearchResultFactory          $searchResultFactory,
         CollectionProcessorInterface $collectionProcessor
-    ) {
+    )
+    {
         $this->authorFactory = $authorFactory;
         $this->authorResource = $authorResource;
         $this->authorCollectionFactory = $authorCollectionFactory;
@@ -98,8 +99,6 @@ class AuthorRepository implements AuthorsRepositoryInterface
      */
     public function save(AuthorInterface $author): AuthorInterface
     {
-        $loadedAuthor = $this->authorFactory->create();
-        $this->setData($loadedAuthor, $author);
         $this->authorResource->save($author);
         return $author;
     }
@@ -111,8 +110,6 @@ class AuthorRepository implements AuthorsRepositoryInterface
      */
     public function update(AuthorInterface $author): AuthorInterface
     {
-        $loadedAuthor = $this->getById($author->getId());
-        $this->setData($loadedAuthor, $author);
         $this->authorResource->save($author);
         return $author;
     }
@@ -143,12 +140,5 @@ class AuthorRepository implements AuthorsRepositoryInterface
             return true;
         }
         return false;
-    }
-
-    public function setData(AuthorInterface $loadedAuthor, AuthorInterface $author): AuthorInterface
-    {
-        return $loadedAuthor->setName($author->getName())
-            ->setDate($author->getDate())
-            ->setStatus($author->getStatus());
     }
 }

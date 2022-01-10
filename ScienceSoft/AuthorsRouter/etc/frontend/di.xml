@@ -4,9 +4,9 @@
         <arguments>
             <argument name="routerList" xsi:type="array">
                 <item name="routingExample" xsi:type="array">
-                    <item name="class" xsi:type="string">ScienceSoft\Router\Controller\Router</item>
+                    <item name="class" xsi:type="string">ScienceSoft\AuthorsRouter\Controller\Router</item>
                     <item name="disable" xsi:type="boolean">false</item>
-                    <item name="sortOrder" xsi:type="string">40</item>
+                    <item name="sortOrder" xsi:type="string">10</item>
                 </item>
             </argument>
         </arguments>

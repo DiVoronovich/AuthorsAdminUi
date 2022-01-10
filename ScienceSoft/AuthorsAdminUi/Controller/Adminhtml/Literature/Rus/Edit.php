@@ -6,6 +6,7 @@ namespace ScienceSoft\AuthorsAdminUi\Controller\Adminhtml\Literature\Rus;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 use ScienceSoft\AuthorsWebapi\Api\AuthorInterfaceFactory;
 
 class Edit extends Action
@@ -19,16 +20,20 @@ class Edit extends Action
      * @param Context $context
      * @param AuthorInterfaceFactory $authorFactory
      */
-    public function __construct(Context $context, AuthorInterfaceFactory $authorFactory)
+    public function __construct(
+        Context                $context,
+        AuthorInterfaceFactory $authorFactory
+    )
     {
         parent::__construct($context);
         $this->authorFactory = $authorFactory;
     }
 
-    public function execute()
+    /**
+     * @return ResultInterface
+     */
+    public function execute(): ResultInterface
     {
-        $id = $this->getRequest()->getParam('id');
-        $result = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        return $result;
+        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }
 }

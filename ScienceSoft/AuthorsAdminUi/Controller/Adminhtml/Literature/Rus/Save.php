@@ -7,6 +7,7 @@ use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\Controller\Result\Redirect;
 use ScienceSoft\AuthorsWebapi\Api\AuthorInterface;
 use ScienceSoft\AuthorsWebapi\Api\AuthorInterfaceFactory;
 use ScienceSoft\AuthorsWebapi\Api\AuthorsRepositoryInterface;
@@ -46,11 +47,17 @@ class Save extends Action implements HttpPostActionInterface
         $this->dataObjectHelper = $dataObjectHelper;
     }
 
-    public function execute()
+    /**
+     * @return Redirect
+     */
+    public function execute(): Redirect
     {
         $resultRedirect = $this->resultRedirectFactory->create();
         $author = $this->authorFactory->create();
         $data = $this->getRequest()->getPostValue();
+        if ($data['surname'] == "") {
+            $data['surname'] = null;
+        }
         $this->dataObjectHelper->populateWithArray($author, $data, AuthorInterface::class);
         $author->addData($data);
         $this->authorsRepository->update($author);

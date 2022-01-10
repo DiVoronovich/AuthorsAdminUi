@@ -38,6 +38,21 @@ interface AuthorInterface extends ExtensibleDataInterface
     public function setName(string $name): self;
 
     /**
+     * Get surname
+     *
+     * @return string|null
+     */
+    public function getSurname(): ?string;
+
+    /**
+     * Set surname
+     *
+     * @param string|null $surname
+     * @return $this
+     */
+    public function setSurname(?string $surname): self;
+
+    /**
      * Get date
      *
      * @return string|null
@@ -67,4 +82,18 @@ interface AuthorInterface extends ExtensibleDataInterface
      */
     public function setStatus(int $status): self;
 
+    /**
+     * Get identity
+     *
+     * @return string|null
+     */
+    public function getIdentity(): ?string;
+
+    /**
+     * Set identity
+     *
+     * @param string $identity
+     * @return $this
+     */
+    public function setIdentity(string $identity): self;
 }

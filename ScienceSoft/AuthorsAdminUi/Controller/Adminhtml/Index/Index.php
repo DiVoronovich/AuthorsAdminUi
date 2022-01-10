@@ -3,13 +3,17 @@ declare(strict_types=1);
 
 namespace ScienceSoft\AuthorsAdminUi\Controller\Adminhtml\Index;
 
+use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Controller\ResultInterface;
 
 class Index extends \Magento\Backend\App\Action
 {
-    public function execute()
+    /**
+     * @return ResultInterface
+     */
+    public function execute(): ResultInterface
     {
-        $result = $this->resultFactory->create(ResultFactory::TYPE_PAGE);
-        return $result;
+        return $this->resultFactory->create(ResultFactory::TYPE_PAGE);
     }
 }
