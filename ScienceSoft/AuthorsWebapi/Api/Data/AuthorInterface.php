@@ -1,27 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace ScienceSoft\AuthorsWebapi\Api;
+namespace ScienceSoft\AuthorsWebapi\Api\Data;
 
 use Magento\Framework\Api\ExtensibleDataInterface;
 
 interface AuthorInterface extends ExtensibleDataInterface
 {
-    /**
-     * Get id
-     *
-     * @return int|null
-     */
-    public function getId(): ?int;
-
-    /**
-     * Set id
-     *
-     * @param int $id
-     * @return $this
-     */
-    public function setId(int $id): self;
-
     /**
      * Get name
      *
@@ -96,4 +81,18 @@ interface AuthorInterface extends ExtensibleDataInterface
      * @return $this
      */
     public function setIdentity(string $identity): self;
+
+    /**
+     * Retrieve existing extension attributes object or create a new one.
+     * @return \ScienceSoft\AuthorsWebapi\Api\Data\AuthorExtensionInterface
+     */
+    public function getExtensionAttributes();
+
+    /**
+     * Set an extension attributes object.
+     *
+     * @param  \ScienceSoft\AuthorsWebapi\Api\Data\AuthorExtensionInterface $extensionAttributes
+     * @return $this
+     */
+    public function setExtensionAttributes(\ScienceSoft\AuthorsWebapi\Api\Data\AuthorExtensionInterface $extensionAttributes);
 }

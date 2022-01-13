@@ -1,10 +1,12 @@
 <?php
+declare(strict_types=1);
 
 namespace ScienceSoft\Authors\Model;
 
 use Magento\Framework\Model\AbstractExtensibleModel;
 use ScienceSoft\Authors\Model\ResourceModel\Author as ResourceModel;
-use ScienceSoft\AuthorsWebapi\Api\AuthorInterface;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorExtensionInterface;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
 
 class Author extends AbstractExtensibleModel implements AuthorInterface
 {
@@ -71,33 +73,6 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     }
 
     /**
-     * Set author id
-     *
-     * @param int $id
-     * @return $this
-     */
-    public function setId($id): self
-    {
-        return $this->setData(self::AUTHOR_ID, $id);
-    }
-
-    /**
-     * Get author id
-     *
-     * @return int
-     */
-    public function getId(): ?int
-    {
-        $id = $this->getData(self::AUTHOR_ID);
-
-        if (!$id) {
-            return null;
-        }
-
-        return $id;
-    }
-
-    /**
      * Set author date
      *
      * @param string $date
@@ -159,5 +134,20 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     public function getIdentity(): ?string
     {
         return $this->getData(self::IDENTITY);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getExtensionAttributes()
+    {
+        return $this->_getExtensionAttributes();
+    }
+    /**
+     * @inheritdoc
+     */
+    public function setExtensionAttributes(AuthorExtensionInterface $extensionAttributes)
+    {
+        return $this->_setExtensionAttributes($extensionAttributes);
     }
 }

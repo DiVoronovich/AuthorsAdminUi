@@ -24,8 +24,7 @@ class BackButton implements ButtonProviderInterface
      */
     public function __construct(
         Context $context
-    )
-    {
+    ) {
         $this->urlBuilder = $context->getUrlBuilder();
     }
 
@@ -36,10 +35,10 @@ class BackButton implements ButtonProviderInterface
     public function getButtonData(): array
     {
         return [
-            'label' => __('Back'),
-            'on_click' => sprintf("location.href = '%s';", $this->getBackUrl()),
-            'class' => 'back',
-            'sort_order' => 10
+            'label'      => __('Back'),
+            'on_click'   => sprintf("location.href = '%s';", $this->getBackUrl()),
+            'class'      => 'back',
+            'sort_order' => 10,
         ];
     }
 

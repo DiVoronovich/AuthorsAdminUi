@@ -8,8 +8,8 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Redirect;
-use ScienceSoft\AuthorsWebapi\Api\AuthorInterface;
-use ScienceSoft\AuthorsWebapi\Api\AuthorInterfaceFactory;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterfaceFactory;
 use ScienceSoft\AuthorsWebapi\Api\AuthorsRepositoryInterface;
 
 class Save extends Action implements HttpPostActionInterface
@@ -36,10 +36,10 @@ class Save extends Action implements HttpPostActionInterface
      * @param DataObjectHelper $dataObjectHelper
      */
     public function __construct(
-        Context                    $context,
-        AuthorInterfaceFactory     $authorFactory,
+        Context $context,
+        AuthorInterfaceFactory $authorFactory,
         AuthorsRepositoryInterface $authorsRepository,
-        DataObjectHelper           $dataObjectHelper
+        DataObjectHelper $dataObjectHelper
     ) {
         parent::__construct($context);
         $this->authorFactory = $authorFactory;
@@ -55,9 +55,7 @@ class Save extends Action implements HttpPostActionInterface
         $resultRedirect = $this->resultRedirectFactory->create();
         $author = $this->authorFactory->create();
         $data = $this->getRequest()->getPostValue();
-        if ($data['surname'] == "") {
-            $data['surname'] = null;
-        }
+        $data['author_id'] = (int) $data['author_id'];
         $this->dataObjectHelper->populateWithArray($author, $data, AuthorInterface::class);
         $author->addData($data);
         $this->authorsRepository->update($author);

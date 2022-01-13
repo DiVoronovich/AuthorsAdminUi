@@ -4,17 +4,17 @@ declare(strict_types=1);
 namespace ScienceSoft\AuthorsWebapi\Model;
 
 use Exception;
+use Magento\Framework\Api\Search\SearchResultFactory;
+use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Api\Search\SearchResultInterface;
 use Magento\Framework\Exception\AlreadyExistsException;
 use ScienceSoft\Authors\Model\ResourceModel\Author;
-use \ScienceSoft\AuthorsWebapi\Api\AuthorInterfaceFactory;
 use ScienceSoft\Authors\Model\ResourceModel\Author as AuthorResource;
 use ScienceSoft\Authors\Model\ResourceModel\Author\CollectionFactory as AuthorCollectionFactory;
-use ScienceSoft\AuthorsWebapi\Api\AuthorInterface;
-use Magento\Framework\Api\Search\SearchResultFactory;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterfaceFactory;
 use ScienceSoft\AuthorsWebapi\Api\AuthorsRepositoryInterface;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
 
 class AuthorRepository implements AuthorsRepositoryInterface
 {
@@ -51,13 +51,12 @@ class AuthorRepository implements AuthorsRepositoryInterface
      * @param CollectionProcessorInterface $collectionProcessor
      */
     public function __construct(
-        AuthorInterfaceFactory       $authorFactory,
-        AuthorResource               $authorResource,
-        AuthorCollectionFactory      $authorCollectionFactory,
-        SearchResultFactory          $searchResultFactory,
+        AuthorInterfaceFactory $authorFactory,
+        AuthorResource $authorResource,
+        AuthorCollectionFactory $authorCollectionFactory,
+        SearchResultFactory $searchResultFactory,
         CollectionProcessorInterface $collectionProcessor
-    )
-    {
+    ) {
         $this->authorFactory = $authorFactory;
         $this->authorResource = $authorResource;
         $this->authorCollectionFactory = $authorCollectionFactory;
@@ -77,6 +76,17 @@ class AuthorRepository implements AuthorsRepositoryInterface
     }
 
     /**
+     * @param string $identity
+     * @return AuthorInterface|null
+     */
+    public function getByIdentity(string $identity): ?AuthorInterface
+    {
+        $author = $this->authorFactory->create();
+        $this->authorResource->load($author, $identity, 'identity');
+        return $author;
+    }
+
+    /**
      * @param SearchCriteriaInterface $searchCriteria
      * @return SearchResultInterface
      */
@@ -85,7 +95,8 @@ class AuthorRepository implements AuthorsRepositoryInterface
         $searchResult = $this->searchResultFactory->create();
         $searchResult->setSearchCriteria($searchCriteria);
 
-        $this->collectionProcessor->process($searchCriteria, $collection = $this->authorCollectionFactory->create());
+        $collection = $this->authorCollectionFactory->create();
+        $this->collectionProcessor->process($searchCriteria, $collection);
         $searchResult->setTotalCount($collection->getSize());
         $collection->setCurPage($searchCriteria->getCurrentPage());
         $searchResult->setItems($collection->getItems());

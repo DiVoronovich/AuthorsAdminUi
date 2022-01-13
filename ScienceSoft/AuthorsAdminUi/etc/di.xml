@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="ScienceSoft\AuthorsWebapi\Api\AuthorInterface" type="ScienceSoft\Authors\Model\Author" />
+    <preference for="ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface" type="ScienceSoft\Authors\Model\Author" />
     <preference for="ScienceSoft\AuthorsWebapi\Api\AuthorsRepositoryInterface" type="ScienceSoft\AuthorsWebapi\Model\AuthorRepository" />
     <preference for="Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor" />
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="sample_grid_data_source" xsi:type="string">ScienceSoft\Authors\Model\ResourceModel\Author\Collection</item>
+                <item name="sample_grid_data_source" xsi:type="string">ScienceSoftAuthorsCollection</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="ScienceSoft\Authors\Model\ResourceModel\Author\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="ScienceSoftAuthorsCollection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">scnsoft_authors</argument>
             <argument name="resourceModel" xsi:type="string">ScienceSoft\Authors\Model\ResourceModel\Author</argument>

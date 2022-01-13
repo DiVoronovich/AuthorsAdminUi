@@ -9,6 +9,7 @@ use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\View\Element\Template\Context;
 use ScienceSoft\Authors\Model\AuthorFactory;
 use Magento\Framework\View\Element\Template;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
 use ScienceSoft\AuthorsWebapi\Model\AuthorRepository;
 
 class View extends Template
@@ -33,7 +34,6 @@ class View extends Template
      */
     private SearchCriteriaBuilder $searchCriteriaBuilder;
 
-
     /**
      * View constructor.
      * @param Context $context
@@ -44,14 +44,13 @@ class View extends Template
      * @param array $data
      */
     public function __construct(
-        Context               $context,
-        AuthorFactory         $authorFactory,
-        Action                $action,
-        AuthorRepository      $authorRepository,
+        Context $context,
+        AuthorFactory $authorFactory,
+        Action $action,
+        AuthorRepository $authorRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
-        array                 $data = []
-    )
-    {
+        array $data = []
+    ) {
         parent::__construct($context, $data);
         $this->authorFactory = $authorFactory;
         $this->action = $action;
@@ -60,12 +59,11 @@ class View extends Template
     }
 
     /**
-     * @return DocumentInterface[]
+     * @return AuthorInterface
      */
-    public function getAuthor(): array
+    public function getAuthor(): AuthorInterface
     {
         $identity = $this->action->getRequest()->getParam('identity');
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('identity', $identity)->create();
-        return $this->authorRepository->getList($searchCriteria)->getItems();
+        return $this->authorRepository->getByIdentity($identity);
     }
 }

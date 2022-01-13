@@ -24,14 +24,13 @@ class DataProvider extends AbstractDataProvider
      * @param array $data
      */
     public function __construct(
-        string            $name,
-        string            $primaryFieldName,
-        string            $requestFieldName,
+        string $name,
+        string $primaryFieldName,
+        string $requestFieldName,
         CollectionFactory $collectionFactory,
-        array             $meta = [],
-        array             $data = []
-    )
-    {
+        array $meta = [],
+        array $data = []
+    ) {
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
         $this->collection = $collectionFactory->create();
     }

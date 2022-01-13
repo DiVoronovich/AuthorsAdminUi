@@ -3,15 +3,10 @@ declare(strict_types=1);
 
 namespace ScienceSoft\Authors\Block;
 
-use Magento\Backend\App\Action;
 use Magento\Framework\Api\Search\DocumentInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\Data\Collection\AbstractDb;
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
-use ScienceSoft\Authors\Model\AuthorFactory;
 use ScienceSoft\AuthorsWebapi\Model\AuthorRepository;
 
 class Listing extends Template
@@ -39,12 +34,11 @@ class Listing extends Template
      * @param array $data
      */
     public function __construct(
-        Context               $context,
-        AuthorRepository      $authorRepository,
+        Context $context,
+        AuthorRepository $authorRepository,
         SearchCriteriaBuilder $searchCriteriaBuilder,
-        array                 $data = []
-    )
-    {
+        array $data = []
+    ) {
         parent::__construct($context, $data);
         $this->authorRepository = $authorRepository;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;

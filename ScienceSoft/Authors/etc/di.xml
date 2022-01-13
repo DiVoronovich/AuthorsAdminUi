@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<config>
-    <type name="ScienceSoft\Authors\Model\Author">
-        <plugin name="ScienceSoft_Authors_Plugin" type="ScienceSoft\Authors\Plugin\AuthorPlugin" sortOrder="1" disabled="false"/>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface" type="ScienceSoft\Authors\Model\Author"/>
+    <type name="ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface">
+        <plugin name="ScienceSoft_Authors_Plugin" type="ScienceSoft\Authors\Plugin\AuthorPlugin" sortOrder="1" disabled="true"/>
+        <plugin name="AuthorExtensionAttributeOperations" type="ScienceSoft\Authors\Plugin\AuthorAttributeLoad" sortOrder="2" disabled="true"/>
+    </type>
+    <type name="ScienceSoft\AuthorsWebapi\Api\AuthorsRepositoryInterface">
+        <plugin name="authors_repository_plugin" type="ScienceSoft\Authors\Plugin\AuthorsRepositoryPlugin" sortOrder="1" disabled="false"/>
     </type>
 </config>

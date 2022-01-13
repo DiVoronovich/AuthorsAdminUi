@@ -23,13 +23,12 @@ class Actions extends Column
      * @param array $data
      */
     public function __construct(
-        ContextInterface   $context,
+        ContextInterface $context,
         UiComponentFactory $uiComponentFactory,
-        UrlInterface       $urlBuilder,
-        array              $components = [],
-        array              $data = []
-    )
-    {
+        UrlInterface $urlBuilder,
+        array $components = [],
+        array $data = []
+    ) {
         $this->urlBuilder = $urlBuilder;
         parent::__construct($context, $uiComponentFactory, $components, $data);
     }
@@ -46,11 +45,15 @@ class Actions extends Column
                 $name = $this->getData('name');
                 if (isset($item['author_id'])) {
                     $item[$name]['edit'] = [
-                        'href' => $this->urlBuilder->getUrl('authors/literature_rus/edit', ['id' => $item['author_id']]),
+                        'href'  => $this->urlBuilder->getUrl('authors/literature_rus/edit', ['id' => $item['author_id']]
+                        ),
                         'label' => __('Edit'),
                     ];
                     $item[$name]['delete'] = [
-                        'href' => $this->urlBuilder->getUrl('authors/literature_rus/delete', ['id' => $item['author_id']]),
+                        'href'  => $this->urlBuilder->getUrl(
+                            'authors/literature_rus/delete',
+                            ['id' => $item['author_id']]
+                        ),
                         'label' => __('Delete'),
                     ];
                 }

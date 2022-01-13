@@ -28,4 +28,11 @@
             <column name="status_id"/>
         </constraint>
     </table>
+    <table name="scnsoft_authors_books" resource="default" engine="innodb" comment="Authors books table">
+        <column xsi:type="int" name="book_id" unsigned="false" nullable="false" identity="true" comment="Book ID"/>
+        <column xsi:type="varchar" name="book_name" nullable="false" length="255" comment="Name of book"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="book_id"/>
+        </constraint>
+    </table>
 </schema>

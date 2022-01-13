@@ -7,7 +7,11 @@ use ScienceSoft\Authors\Model\Author;
 
 class AuthorPlugin
 {
-    public function afterGetName(Author $subject)
+    /**
+     * @param Author $subject
+     * @return string
+     */
+    public function afterGetName(Author $subject): string
     {
         return '111';
     }

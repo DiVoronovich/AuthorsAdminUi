@@ -3,14 +3,15 @@
 
 use ScienceSoft\Authors\Block\View;
 
-$author = $block->getAuthor();
+//$author = $block->getAuthor();
+$item = $block->getAuthor();
 ?>
 
 <h2 style="text-align: center">All information about author</h2>
 <br>
 
 <div style="display: flex; justify-content: space-around">
-    <?php foreach ($author as $item): ?>
+<!--    --><?php //foreach ($author as $item): ?>
         <div>
             <div style="font-weight: bold; font-size: 24px; color: #0A246A">Id_author</div>
             <div style="color: #2774a7; font-size: 16px"><?= $item['author_id'] ?></div>
@@ -35,5 +36,5 @@ $author = $block->getAuthor();
             <div style="font-weight: bold; font-size: 24px; color: #0A246A">Identity</div>
             <div style="color: #2774a7; font-size: 16px"><?= $item['identity'] ?></div>
         </div>
-    <?php endforeach; ?>
+<!--    --><?php //endforeach; ?>
 </div>

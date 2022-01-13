@@ -5,6 +5,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'ScienceSoft_Authors',
+    'ScienceSoft_BooksWebapi',
     __DIR__
 );

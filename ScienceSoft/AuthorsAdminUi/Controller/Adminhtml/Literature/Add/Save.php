@@ -8,9 +8,9 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Redirect;
-use ScienceSoft\AuthorsWebapi\Api\AuthorInterface;
-use ScienceSoft\AuthorsWebapi\Api\AuthorInterfaceFactory;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterfaceFactory;
 use ScienceSoft\AuthorsWebapi\Api\AuthorsRepositoryInterface;
+use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
 
 class Save extends Action implements HttpPostActionInterface
 {
@@ -36,12 +36,11 @@ class Save extends Action implements HttpPostActionInterface
      * @param DataObjectHelper $dataObjectHelper
      */
     public function __construct(
-        Context                    $context,
-        AuthorInterfaceFactory     $authorFactory,
+        Context $context,
+        AuthorInterfaceFactory $authorFactory,
         AuthorsRepositoryInterface $authorsRepository,
-        DataObjectHelper           $dataObjectHelper
-    )
-    {
+        DataObjectHelper $dataObjectHelper
+    ) {
         parent::__construct($context);
         $this->authorFactory = $authorFactory;
         $this->authorsRepository = $authorsRepository;

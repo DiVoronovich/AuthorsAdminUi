@@ -4,31 +4,11 @@ declare(strict_types=1);
 namespace ScienceSoft\AuthorsAdminUi\Controller\Adminhtml\Literature\Rus;
 
 use Magento\Backend\App\Action;
-use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Framework\Controller\ResultInterface;
-use ScienceSoft\AuthorsWebapi\Api\AuthorInterfaceFactory;
 
 class Add extends Action
 {
-    /**
-     * @var AuthorInterfaceFactory
-     */
-    private AuthorInterfaceFactory $authorFactory;
-
-    /**
-     * @param Context $context
-     * @param AuthorInterfaceFactory $authorFactory
-     */
-    public function __construct(
-        Context                $context,
-        AuthorInterfaceFactory $authorFactory
-    )
-    {
-        parent::__construct($context);
-        $this->authorFactory = $authorFactory;
-    }
-
     /**
      * @return ResultInterface
      */
