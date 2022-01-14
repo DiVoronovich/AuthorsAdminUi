@@ -28,6 +28,7 @@ class Listing extends Template
 
     /**
      * Listing constructor.
+     *
      * @param Context $context
      * @param AuthorRepository $authorRepository
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
@@ -47,6 +48,7 @@ class Listing extends Template
 
     /**
      * Get all authors
+     *
      * @return DocumentInterface[]
      */
     public function getAllAuthors(): array

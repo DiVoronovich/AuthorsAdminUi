@@ -11,22 +11,33 @@ use ScienceSoft\BooksWebapi\Api\BooksRepositoryInterface;
 class AuthorsRepositoryPlugin
 {
     /**
-     * @var AuthorsRepositoryInterface
+     * @var BooksRepositoryInterface
      */
-    private AuthorsRepositoryInterface $authorsRepository;
-
     private BooksRepositoryInterface $booksRepository;
 
     /**
-     * @param AuthorsRepositoryInterface $authorsRepository
      * @param BooksRepositoryInterface $booksRepository
      */
     public function __construct(
-        AuthorsRepositoryInterface $authorsRepository,
         BooksRepositoryInterface $booksRepository
     ) {
-        $this->authorsRepository = $authorsRepository;
         $this->booksRepository = $booksRepository;
+    }
+
+    /**
+     * @param AuthorsRepositoryInterface $subject
+     * @param AuthorInterface $author
+     * @return AuthorInterface
+     */
+    public function afterGetByIdentity(
+        AuthorsRepositoryInterface $subject,
+        AuthorInterface $author
+    ): ?AuthorInterface {
+        $book = $this->booksRepository->getById(1);
+        $extensionAttributes = $author->getExtensionAttributes();
+        $extensionAttributes->setBook($book);
+        $author->setExtensionAttributes($extensionAttributes);
+        return $author;
     }
 
     /**
@@ -41,10 +52,8 @@ class AuthorsRepositoryPlugin
         $authors = [];
         foreach ($searchResult->getItems() as $entity) {
             $book = $this->booksRepository->getById(1);
-            $bookName = $book->getBook();
-
             $extensionAttributes = $entity->getExtensionAttributes();
-            $extensionAttributes->setBook($bookName);
+            $extensionAttributes->setBook($book);
             $entity->setExtensionAttributes($extensionAttributes);
 
             $authors[] = $entity;
@@ -52,26 +61,4 @@ class AuthorsRepositoryPlugin
         $searchResult->setItems($authors);
         return $searchResult;
     }
-
-    //    /**
-    //     * @param AuthorsRepositoryInterface $subject
-    //     * @param AuthorInterface $result
-    //     * @param AuthorInterface $entity
-    //     * @return AuthorInterface
-    //     */
-    //    public function afterSave(
-    //        AuthorsRepositoryInterface $subject,
-    //        AuthorInterface $result,
-    //        AuthorInterface $entity
-    //    ): AuthorInterface {
-    //        $extensionAttributes = $entity->getExtensionAttributes();
-    //        $ourCustomData = $extensionAttributes->getBook();
-    //        $this->authorsRepository->save($ourCustomData);
-    //
-    //        $resultAttributes = $result->getExtensionAttributes();
-    //        $resultAttributes->setBook($ourCustomData);
-    //        $result->setExtensionAttributes($resultAttributes);
-    //
-    //        return $result;
-    //    }
 }

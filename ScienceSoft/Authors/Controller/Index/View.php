@@ -19,6 +19,8 @@ class View implements ActionInterface
     private ResultFactory $resultFactory;
 
     /**
+     * View constructor.
+     *
      * @param ResultFactory $resultFactory
      */
     public function __construct(ResultFactory $resultFactory)

@@ -143,6 +143,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     {
         return $this->_getExtensionAttributes();
     }
+
     /**
      * @inheritdoc
      */

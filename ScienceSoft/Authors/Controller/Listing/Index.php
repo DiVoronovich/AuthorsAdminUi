@@ -19,6 +19,8 @@ class Index implements ActionInterface
     private ResultFactory $resultFactory;
 
     /**
+     * Index constructor.
+     *
      * @param ResultFactory $resultFactory
      */
     public function __construct(ResultFactory $resultFactory)
