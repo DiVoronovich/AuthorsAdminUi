@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="ScienceSoft_BooksAdminUi::books_grid"
+             title="Books"
+             translate="title"
+             module="ScienceSoft_BooksAdminUi"
+             sortOrder="100"
+             parent="ScienceSoft_AuthorsAdminUi::authors"
+             action="books/literature_rus/listing"
+             resource="ScienceSoft_AuthorsAdminUi::books_grid"/>
+    </menu>
+</config>

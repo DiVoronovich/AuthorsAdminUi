@@ -147,9 +147,7 @@ class AuthorRepository implements AuthorsRepositoryInterface
     {
         $authorId = $author->getId();
         $this->authorResource->load($author, $authorId);
-        if ($this->authorResource->delete($author)) {
-            return true;
-        }
-        return false;
+        $this->authorResource->delete($author);
+        return true;
     }
 }

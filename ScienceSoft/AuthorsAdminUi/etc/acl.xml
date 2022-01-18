@@ -4,7 +4,7 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="ScienceSoft_AuthorsAdminUi::sample2" title="Samples" sortOrder="10">
+                <resource id="ScienceSoft_AuthorsAdminUi::authors" title="Samples" sortOrder="10">
                     <resource id="ScienceSoft_AuthorsAdminUi::sample_grid" title="Grid" sortOrder="100"/>
                 </resource>
             </resource>

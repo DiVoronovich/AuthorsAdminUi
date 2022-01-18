@@ -1,28 +1,29 @@
 <?php
 declare(strict_types=1);
 
-namespace ScienceSoft\AuthorsAdminUi\Controller\Adminhtml\Literature\Rus;
+namespace ScienceSoft\BooksAdminUi\Controller\Adminhtml\Literature\Rus;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\Result\Redirect;
-use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
-use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterfaceFactory;
-use ScienceSoft\AuthorsWebapi\Api\AuthorsRepositoryInterface;
+use Magento\Framework\Exception\AlreadyExistsException;
+use ScienceSoft\BooksWebapi\Api\BooksRepositoryInterface;
+use ScienceSoft\BooksWebapi\Api\Data\BookInterface;
+use ScienceSoft\BooksWebapi\Api\Data\BookInterfaceFactory;
 
 class Save extends Action implements HttpPostActionInterface
 {
     /**
-     * @var AuthorInterfaceFactory
+     * @var BookInterfaceFactory
      */
-    private AuthorInterfaceFactory $authorFactory;
+    private BookInterfaceFactory $bookFactory;
 
     /**
-     * @var AuthorsRepositoryInterface
+     * @var BooksRepositoryInterface
      */
-    private AuthorsRepositoryInterface $authorsRepository;
+    private BooksRepositoryInterface $bookRepository;
 
     /**
      * @var DataObjectHelper
@@ -31,33 +32,34 @@ class Save extends Action implements HttpPostActionInterface
 
     /**
      * @param Context $context
-     * @param AuthorInterfaceFactory $authorFactory
-     * @param AuthorsRepositoryInterface $authorsRepository
+     * @param BookInterfaceFactory $bookFactory
+     * @param BooksRepositoryInterface $bookRepository
      * @param DataObjectHelper $dataObjectHelper
      */
     public function __construct(
         Context $context,
-        AuthorInterfaceFactory $authorFactory,
-        AuthorsRepositoryInterface $authorsRepository,
+        BookInterfaceFactory $bookFactory,
+        BooksRepositoryInterface $bookRepository,
         DataObjectHelper $dataObjectHelper
     ) {
         parent::__construct($context);
-        $this->authorFactory = $authorFactory;
-        $this->authorsRepository = $authorsRepository;
+        $this->bookFactory = $bookFactory;
+        $this->bookRepository = $bookRepository;
         $this->dataObjectHelper = $dataObjectHelper;
     }
 
     /**
      * @return Redirect
+     * @throws AlreadyExistsException
      */
     public function execute(): Redirect
     {
         $resultRedirect = $this->resultRedirectFactory->create();
-        $author = $this->authorFactory->create();
+        $book = $this->bookFactory->create();
         $data = $this->getRequest()->getPostValue();
-        $this->dataObjectHelper->populateWithArray($author, $data, AuthorInterface::class);
-        $author->addData($data);
-        $this->authorsRepository->update($author);
+        $this->dataObjectHelper->populateWithArray($book, $data, BookInterface::class);
+        $book->addData($data);
+        $this->bookRepository->save($book);
 
         return $resultRedirect->setPath('*/*/listing');
     }

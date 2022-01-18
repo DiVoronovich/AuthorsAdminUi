@@ -28,12 +28,13 @@ class AuthorsRepositoryPlugin
      * @param AuthorsRepositoryInterface $subject
      * @param AuthorInterface $author
      * @return AuthorInterface
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterGetByIdentity(
         AuthorsRepositoryInterface $subject,
         AuthorInterface $author
     ): ?AuthorInterface {
-        $book = $this->booksRepository->getById(1);
+        $book = $this->booksRepository->getById(3);
         $extensionAttributes = $author->getExtensionAttributes();
         $extensionAttributes->setBook($book);
         $author->setExtensionAttributes($extensionAttributes);
@@ -44,6 +45,7 @@ class AuthorsRepositoryPlugin
      * @param AuthorsRepositoryInterface $subject
      * @param SearchResult $searchResult
      * @return SearchResult
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public function afterGetList(
         AuthorsRepositoryInterface $subject,

@@ -2,18 +2,18 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
-        <add id="ScienceSoft_AuthorsAdminUi::sample2"
+        <add id="ScienceSoft_AuthorsAdminUi::authors"
              title="ScienceSoft"
              translate="title"
              module="ScienceSoft_AuthorsAdminUi"
              sortOrder="10"
-             resource="ScienceSoft_AuthorsAdminUi::sample2"/>
+             resource="ScienceSoft_AuthorsAdminUi::authors"/>
         <add id="ScienceSoft_AuthorsAdminUi::sample_grid"
-             title="Grid"
+             title="Authors"
              translate="title"
              module="ScienceSoft_AuthorsAdminUi"
              sortOrder="100"
-             parent="ScienceSoft_AuthorsAdminUi::sample2"
+             parent="ScienceSoft_AuthorsAdminUi::authors"
              action="authors/literature_rus/listing"
              resource="ScienceSoft_AuthorsAdminUi::sample_grid"/>
     </menu>

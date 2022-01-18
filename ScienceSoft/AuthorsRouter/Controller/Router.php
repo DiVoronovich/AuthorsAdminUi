@@ -51,7 +51,7 @@ class Router implements RouterInterface
                 'identity' => $identity,
             ]);
 
-            return $this->actionFactory->create(Forward::class, ['request' => $request]);
+            return $this->actionFactory->create(Forward::class);
         }
 
         return null;

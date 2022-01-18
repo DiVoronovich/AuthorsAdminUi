@@ -13,30 +13,30 @@ $book = $author->getExtensionAttributes()->getBook();
 <div style="display: flex; justify-content: space-around">
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Id_author</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['author_id'] ?></div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author->getId() ?></div>
     </div>
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Name</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['name'] ?></div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author->getName() ?></div>
     </div>
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Surname</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['surname'] ?></div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author->getSurname() ?></div>
     </div>
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Date</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['date'] ?></div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author->getDate() ?></div>
     </div>
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Status</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['status'] ?></div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author->getStatus() ?></div>
     </div>
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Identity</div>
-        <div style="color: #2774a7; font-size: 16px"><?= $author['identity'] ?></div>
+        <div style="color: #2774a7; font-size: 16px"><?= $author->getIdentity() ?></div>
     </div>
     <div>
         <div style="font-weight: bold; font-size: 24px; color: #0A246A">Book</div>
-        <div style="color: #2774a7; font-size: 16px"><?=$book['book'] ?></div>
+        <div style="color: #2774a7; font-size: 16px"><?=$book->getBook() ?></div>
     </div>
 </div>

@@ -14,15 +14,10 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      * Constants defined for keys of  data array
      */
     const AUTHOR_ID = 'author_id';
-
     const NAME = 'name';
-
     const SURNAME = 'surname';
-
     const DATE = 'date';
-
     const STATUS = 'status';
-
     const IDENTITY = 'identity';
 
     protected function _construct()
@@ -33,7 +28,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     /**
      * Set author name
      *
-     * @param string|null $name
+     * @param string $name
      * @return $this
      */
     public function setName(string $name): self
@@ -111,7 +106,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
      */
     public function getStatus(): ?int
     {
-        return $this->_getData(self::STATUS);
+        return (int) $this->_getData(self::STATUS);
     }
 
     /**

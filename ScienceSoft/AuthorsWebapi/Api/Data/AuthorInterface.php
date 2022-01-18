@@ -8,6 +8,21 @@ use Magento\Framework\Api\ExtensibleDataInterface;
 interface AuthorInterface extends ExtensibleDataInterface
 {
     /**
+     * Identifier getter
+     *
+     * @return int
+     */
+    public function getId();
+
+    /**
+     * Identifier setter
+     *
+     * @param int $value
+     * @return $this
+     */
+    public function setId($value);
+
+    /**
      * Get name
      *
      * @return string|null

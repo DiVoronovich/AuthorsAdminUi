@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">books_form_add.books_form_add_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Book Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">books_form_add</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="ScienceSoft\BooksAdminUi\Block\Adminhtml\Config\Edit\SaveButton"/>
+        </buttons>
+        <namespace>books_form_add</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>books_form_add.books_form_add_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="books_form_add_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">ScienceSoft\BooksAdminUi\Model\Books\DataProvider</argument>
+            <argument name="name" xsi:type="string">books_form_add_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">book_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="books/literature_add/save"/>
+        </settings>
+    </dataSource>
+    <fieldset name="book_details">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Book Details</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="book">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Book Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">scnsoft_authors_books</item>
+                    <item name="dataScope" xsi:type="string">book</item>
+                </item>
+            </argument>
+        </field>
+        <field name="book_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Book_name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">scnsoft_authors_books</item>
+                    <item name="dataScope" xsi:type="string">book_name</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

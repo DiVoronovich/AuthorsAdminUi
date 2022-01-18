@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">books_form_edit.books_form_edit_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="ScienceSoft\BooksAdminUi\Block\Adminhtml\Config\Edit\SaveButton"/>
+            <button name="back" class="ScienceSoft\BooksAdminUi\Block\Adminhtml\Config\Edit\BackButton"/>
+        </buttons>
+        <namespace>books_form_edit</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>books_form_edit.books_form_edit_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="books_form_edit_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="books/literature_rus/save"/>
+        </settings>
+        <dataProvider class="ScienceSoft\BooksAdminUi\Model\Books\DataProvider" name="books_form_edit_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>book_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="book_info">
+        <settings>
+            <label translate="true">Book information</label>
+        </settings>
+        <field name="book_id" formElement="input">
+            <settings>
+                <dataType>number</dataType>
+                <label translate="true">ID</label>
+                <disabled>true</disabled>
+            </settings>
+        </field>
+        <field name="book" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Name</label>
+            </settings>
+        </field>
+        <field name="book_name" formElement="input">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Book_name</label>
+            </settings>
+        </field>
+    </fieldset>
+</form>

@@ -43,9 +43,9 @@ class View extends Template
     /**
      * View one author
      *
-     * @return AuthorInterface
+     * @return null|AuthorInterface
      */
-    public function getAuthor(): AuthorInterface
+    public function getAuthor(): ?AuthorInterface
     {
         $identity = $this->action->getRequest()->getParam('identity');
         return $this->authorRepository->getByIdentity($identity);

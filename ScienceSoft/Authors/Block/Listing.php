@@ -19,31 +19,25 @@ class Listing extends Template
     /**
      * @var SearchCriteriaBuilder
      */
-    private SearchCriteriaBuilder $searchCriteriaBuilder;
-
-    /**
-     * @var array
-     */
-    private array $data;
+    private SearchCriteriaBuilder $searchBuilder;
 
     /**
      * Listing constructor.
      *
      * @param Context $context
      * @param AuthorRepository $authorRepository
-     * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param SearchCriteriaBuilder $searchBuilder
      * @param array $data
      */
     public function __construct(
         Context $context,
         AuthorRepository $authorRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
+        SearchCriteriaBuilder $searchBuilder,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->authorRepository = $authorRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->data = $data;
+        $this->searchBuilder = $searchBuilder;
     }
 
     /**
@@ -53,7 +47,7 @@ class Listing extends Template
      */
     public function getAllAuthors(): array
     {
-        $searchCriteria = $this->searchCriteriaBuilder->addFilters([])->create();
+        $searchCriteria = $this->searchBuilder->addFilters([])->create();
         return $this->authorRepository->getList($searchCriteria)->getItems();
     }
 }

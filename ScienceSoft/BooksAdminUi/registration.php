@@ -5,6 +5,6 @@ use Magento\Framework\Component\ComponentRegistrar;
 
 ComponentRegistrar::register(
     ComponentRegistrar::MODULE,
-    'ScienceSoft_AuthorsAdminUi',
+    'ScienceSoft_BooksAdminUi',
     __DIR__
 );

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace ScienceSoft\AuthorsAdminUi\Ui\Component\Listing\Column;
+namespace ScienceSoft\BooksAdminUi\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -43,18 +43,18 @@ class Actions extends Column
         if (isset($dataSource['data']['items'])) {
             foreach ($dataSource['data']['items'] as & $item) {
                 $name = $this->getData('name');
-                if (isset($item['author_id'])) {
+                if (isset($item['book_id'])) {
                     $item[$name]['edit'] = [
                         'href'  => $this->urlBuilder->getUrl(
-                            'authors/literature_rus/edit',
-                            ['id' => $item['author_id']]
+                            'books/literature_rus/edit',
+                            ['id' => $item['book_id']]
                         ),
                         'label' => __('Edit'),
                     ];
                     $item[$name]['delete'] = [
                         'href'  => $this->urlBuilder->getUrl(
-                            'authors/literature_rus/delete',
-                            ['id' => $item['author_id']]
+                            'books/literature_rus/delete',
+                            ['id' => $item['book_id']]
                         ),
                         'label' => __('Delete'),
                     ];
