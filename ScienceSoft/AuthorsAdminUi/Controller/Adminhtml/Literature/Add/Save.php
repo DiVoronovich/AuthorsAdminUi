@@ -55,6 +55,7 @@ class Save extends Action implements HttpPostActionInterface
         $resultRedirect = $this->resultRedirectFactory->create();
         $author = $this->authorFactory->create();
         $data = $this->getRequest()->getPostValue();
+        $data['image'] = $data['image'][0]['file'];
         $this->dataObjectHelper->populateWithArray($author, $data, AuthorInterface::class);
         $author->addData($data);
         $this->authorsRepository->save($author);

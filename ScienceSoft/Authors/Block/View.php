@@ -22,32 +22,44 @@ class View extends Template
     private AuthorRepository $authorRepository;
 
     /**
+     * @var Image
+     */
+    private Image $image;
+
+    /**
      * View constructor.
      *
      * @param Context $context
      * @param Action $action
      * @param AuthorRepository $authorRepository
+     * @param Image $image
      * @param array $data
      */
     public function __construct(
         Context $context,
         Action $action,
         AuthorRepository $authorRepository,
+        Image $image,
         array $data = []
     ) {
         parent::__construct($context, $data);
         $this->action = $action;
         $this->authorRepository = $authorRepository;
+        $this->image = $image;
     }
 
     /**
      * View one author
      *
      * @return null|AuthorInterface
+     * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function getAuthor(): ?AuthorInterface
     {
         $identity = $this->action->getRequest()->getParam('identity');
-        return $this->authorRepository->getByIdentity($identity);
+        $author = $this->authorRepository->getByIdentity($identity);
+        $pathImage = $this->image->getPathImage($author->getImage());
+        $author->setImage($pathImage);
+        return $author;
     }
 }

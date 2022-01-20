@@ -117,5 +117,19 @@
                 </item>
             </argument>
         </field>
+        <field name="image" formElement="fileUploader">
+            <settings>
+                <label translate="true">Photo</label>
+            </settings>
+            <formElements>
+                <fileUploader>
+                    <settings>
+                        <uploaderConfig>
+                            <param xsi:type="string" name="url">authors/literature_image/upload</param>
+                        </uploaderConfig>
+                    </settings>
+                </fileUploader>
+            </formElements>
+        </field>
     </fieldset>
 </form>

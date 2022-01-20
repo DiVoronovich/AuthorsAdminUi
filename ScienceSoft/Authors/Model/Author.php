@@ -19,6 +19,7 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     const DATE = 'date';
     const STATUS = 'status';
     const IDENTITY = 'identity';
+    const IMAGE ='image';
 
     protected function _construct()
     {
@@ -129,6 +130,28 @@ class Author extends AbstractExtensibleModel implements AuthorInterface
     public function getIdentity(): ?string
     {
         return $this->getData(self::IDENTITY);
+    }
+
+    /**
+     * Set author photo
+     *
+     * @param string $image
+     * @return $this
+     */
+    public function setImage(string $image): self
+    {
+        return $this->setData(self::IMAGE, $image);
+    }
+
+    /**
+     * Get author photo
+     *
+     * @return string|null
+     * @codeCoverageIgnoreStart
+     */
+    public function getImage(): ?string
+    {
+        return $this->getData(self::IMAGE);
     }
 
     /**

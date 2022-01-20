@@ -98,6 +98,21 @@ interface AuthorInterface extends ExtensibleDataInterface
     public function setIdentity(string $identity): self;
 
     /**
+     * Get photo
+     *
+     * @return string|null
+     */
+    public function getImage(): ?string;
+
+    /**
+     * Set photo
+     *
+     * @param string $image
+     * @return $this
+     */
+    public function setImage(string $image): self;
+
+    /**
      * Retrieve existing extension attributes object or create a new one.
      * @return \ScienceSoft\AuthorsWebapi\Api\Data\AuthorExtensionInterface
      */
