@@ -5,9 +5,10 @@ use ScienceSoft\Authors\Block\View;
 
 $author = $block->getAuthor();
 $book = $author->getExtensionAttributes()->getBook();
+$title = $block->getTitleOfAuthorPage();
 ?>
 
-<h2 style="text-align: center">All information about author</h2>
+<h2 style="text-align: center"><?=$title?></h2>
 <br>
 
 <div style="display: flex; justify-content: space-around">

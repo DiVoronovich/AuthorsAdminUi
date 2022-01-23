@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace ScienceSoft\Authors\Block;
 
 use Magento\Backend\App\Action;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Element\Template;
 use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
@@ -27,6 +28,11 @@ class View extends Template
     private Image $image;
 
     /**
+     * @var ScopeConfigInterface
+     */
+    private ScopeConfigInterface $scopeConfig;
+
+    /**
      * View constructor.
      *
      * @param Context $context
@@ -39,6 +45,7 @@ class View extends Template
         Context $context,
         Action $action,
         AuthorRepository $authorRepository,
+        ScopeConfigInterface $scopeConfig,
         Image $image,
         array $data = []
     ) {
@@ -46,6 +53,7 @@ class View extends Template
         $this->action = $action;
         $this->authorRepository = $authorRepository;
         $this->image = $image;
+        $this->scopeConfig = $scopeConfig;
     }
 
     /**
@@ -61,5 +69,18 @@ class View extends Template
         $pathImage = $this->image->getPathImage($author->getImage());
         $author->setImage($pathImage);
         return $author;
+    }
+
+    /**
+     * Get title for page of author
+     *
+     * @return string
+     */
+    public function getTitleOfAuthorPage(): string
+    {
+        return $this->scopeConfig->getValue(
+            'author_page/title/display_text',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+        );
     }
 }
