@@ -1,16 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace ScienceSoft\Authors\Block;
+namespace ScienceSoft\Authors\ViewModel;
 
 use Magento\Backend\App\Action;
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\View\Element\Template\Context;
-use Magento\Framework\View\Element\Template;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
+//use ScienceSoft\Authors\Block\Image;
+use ScienceSoft\Authors\Model\Image\Image;
 use ScienceSoft\AuthorsWebapi\Api\Data\AuthorInterface;
 use ScienceSoft\AuthorsWebapi\Model\AuthorRepository;
 
-class View extends Template
+class View implements ArgumentInterface
 {
     /**
      * @var Action
@@ -35,21 +36,17 @@ class View extends Template
     /**
      * View constructor.
      *
-     * @param Context $context
      * @param Action $action
      * @param AuthorRepository $authorRepository
+     * @param ScopeConfigInterface $scopeConfig
      * @param Image $image
-     * @param array $data
      */
     public function __construct(
-        Context $context,
         Action $action,
         AuthorRepository $authorRepository,
         ScopeConfigInterface $scopeConfig,
-        Image $image,
-        array $data = []
+        Image $image
     ) {
-        parent::__construct($context, $data);
         $this->action = $action;
         $this->authorRepository = $authorRepository;
         $this->image = $image;
@@ -80,7 +77,7 @@ class View extends Template
     {
         return $this->scopeConfig->getValue(
             'author_page/title/display_text',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+            \Magento\Store\Model\ScopeInterface::SCOPE_WEBSITE
         );
     }
 }

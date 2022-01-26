@@ -39,6 +39,7 @@ class Router implements RouterInterface
         if ($request->getModuleName() === 'author') {
             return null;
         }
+
         $identifier = trim($request->getPathInfo(), '/');
 
         if (strpos($identifier, 'author_page') !== false) {

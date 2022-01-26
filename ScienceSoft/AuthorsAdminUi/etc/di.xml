@@ -17,4 +17,12 @@
             <argument name="resourceModel" xsi:type="string">ScienceSoft\Authors\Model\ResourceModel\Author</argument>
         </arguments>
     </virtualType>
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="environment" xsi:type="array">
+                <item name="author_page/title/display_text" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+
+    </type>
 </config>

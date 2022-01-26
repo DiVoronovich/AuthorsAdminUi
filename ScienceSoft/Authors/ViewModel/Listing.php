@@ -1,15 +1,15 @@
 <?php
 declare(strict_types=1);
 
-namespace ScienceSoft\Authors\Block;
+namespace ScienceSoft\Authors\ViewModel;
 
 use Magento\Framework\Api\Search\DocumentInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\View\Element\Template\Context;
+use Magento\Framework\View\Element\Block\ArgumentInterface;
 use ScienceSoft\AuthorsWebapi\Model\AuthorRepository;
+use Magento\Framework\Event\ManagerInterface as EventManager;
 
-class Listing extends Template
+class Listing implements ArgumentInterface
 {
     /**
      * @var AuthorRepository
@@ -21,23 +21,20 @@ class Listing extends Template
      */
     private SearchCriteriaBuilder $searchBuilder;
 
+    private EventManager $eventManager;
+
     /**
-     * Listing constructor.
-     *
-     * @param Context $context
      * @param AuthorRepository $authorRepository
      * @param SearchCriteriaBuilder $searchBuilder
-     * @param array $data
      */
     public function __construct(
-        Context $context,
         AuthorRepository $authorRepository,
         SearchCriteriaBuilder $searchBuilder,
-        array $data = []
+        EventManager $eventManager
     ) {
-        parent::__construct($context, $data);
         $this->authorRepository = $authorRepository;
         $this->searchBuilder = $searchBuilder;
+        $this->eventManager = $eventManager;
     }
 
     /**
@@ -48,6 +45,7 @@ class Listing extends Template
     public function getAllAuthors(): array
     {
         $searchCriteria = $this->searchBuilder->addFilters([])->create();
+        $this->eventManager->dispatch('test_event');
         return $this->authorRepository->getList($searchCriteria)->getItems();
     }
 }

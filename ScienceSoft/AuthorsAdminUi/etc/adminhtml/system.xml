@@ -11,7 +11,7 @@
             <group id="title" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                 <label>Title of page</label>
                 <field id="display_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Text of title</label>
+                    <label>Title</label>
                     <comment>This text will display on the frontend.</comment>
                 </field>
             </group>

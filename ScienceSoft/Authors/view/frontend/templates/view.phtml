@@ -1,11 +1,25 @@
 <?php
-/* @var View $block */
 
-use ScienceSoft\Authors\Block\View;
+use Magento\Framework\View\Element\Template;
+use ScienceSoft\Authors\ViewModel\View;
 
-$author = $block->getAuthor();
+/**
+ * @var View $viewModel
+ * @var Template $block
+ */
+
+$viewModel = $block->getData('view_model');
+$author = $viewModel->getAuthor();
 $book = $author->getExtensionAttributes()->getBook();
-$title = $block->getTitleOfAuthorPage();
+$title = $viewModel->getTitleOfAuthorPage();
+
+///* @var View $block */
+//
+//use ScienceSoft\Authors\Block\View;
+//
+//$author = $block->getAuthor();
+//$book = $author->getExtensionAttributes()->getBook();
+//$title = $block->getTitleOfAuthorPage();
 ?>
 
 <h2 style="text-align: center"><?=$title?></h2>

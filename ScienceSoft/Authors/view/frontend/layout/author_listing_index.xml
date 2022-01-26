@@ -2,7 +2,11 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="ScienceSoft\Authors\Block\Listing" name="author_listing_index" template="ScienceSoft_Authors::listing.phtml" />
+            <block name="listing" template="ScienceSoft_Authors::listing.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">ScienceSoft\Authors\ViewModel\Listing</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>
